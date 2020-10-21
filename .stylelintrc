@@ -1,0 +1,68 @@
+{
+  "processors": [
+    "stylelint-processor-styled-components"
+  ],
+
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-styled-components"
+  ],
+
+  "rules": {
+    "property-no-unknown": [
+      true,
+      {
+        "checkPrefixed": true
+      }
+    ],
+
+    "alpha-value-notation": "number",
+    "color-function-notation": "modern",
+    "color-named": "never",
+    "font-weight-notation": "numeric",
+    "function-blacklist": ["rgba", "hsla"],
+    "function-url-no-scheme-relative": true,
+    "function-url-scheme-whitelist": ["data", "/^http/"],
+    "number-max-precision": 2,
+    "shorthand-property-no-redundant-values": true,
+    "declaration-block-no-redundant-longhand-properties": true,
+    "selector-max-attribute": 2,
+    "selector-max-class": 5,
+    "selector-max-compound-selectors": 4,
+    "selector-max-id": 2,
+    "selector-max-pseudo-class": 2,
+    "selector-max-universal": 1,
+    "selector-no-vendor-prefix": true,
+    "media-feature-name-no-vendor-prefix": true,
+    "at-rule-no-vendor-prefix": true,
+    "max-nesting-depth": 2,
+    "no-unknown-animations": true,
+
+    "font-family-name-quotes": "always-where-recommended",
+    "function-comma-newline-after": null,
+    "function-comma-newline-before": "never-multi-line",
+    "function-url-quotes": "always",
+    "value-list-comma-newline-after": null,
+    "value-list-comma-newline-before": "never-multi-line",
+    "declaration-colon-newline-after": null,
+    "declaration-block-semicolon-newline-before": "never-multi-line",
+    "block-closing-brace-space-after": "always-single-line",
+    "selector-attribute-quotes": "always",
+    "selector-list-comma-newline-after": "always-multi-line",
+    "selector-list-comma-newline-before": "never-multi-line",
+    "selector-list-comma-space-after": "always-single-line",
+    "media-query-list-comma-newline-before": "never-multi-line",
+    "at-rule-semicolon-space-before": "never",
+    "comment-empty-line-before": [
+      "always",
+      {
+        "except": ["first-nested"],
+        "ignore": ["after-comment", "stylelint-commands"]
+      }
+    ],
+    "linebreaks": "unix",
+    "max-line-length": 100,
+    "no-empty-first-line": true,
+    "unicode-bom": "never"
+  }
+}

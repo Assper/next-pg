@@ -14,7 +14,7 @@
     "type": "git",
     "url": "git+https://github.com/Assper/next-pg.git"
   },
-  "author": "",
+  "author": "Assper",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Assper/next-pg/issues"
@@ -26,6 +26,7 @@
     "next-i18next": "^6.0.3",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
+    "reflect-metadata": "^0.1.13",
     "rxjs": "^6.6.3",
     "styled-components": "^5.2.0"
   },

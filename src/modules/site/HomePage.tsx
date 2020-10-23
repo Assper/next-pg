@@ -1,22 +1,15 @@
 import { Grid } from '@/common/components/Grid'
 import { Title } from '@/common/components/Title'
-import React, { ReactElement, useCallback, useEffect, useState } from 'react'
-import observable, { ObservableProps } from '@/common/hoc/observable'
-import { Subscription } from 'rxjs'
-import { State, initial } from '@/common/services/ObserverService'
+import React, { ReactElement, useCallback } from 'react'
+import { useStateObserver } from '@/common/hooks/useStateObserver'
+import { ObserverService } from '@/common/services/ObserverService'
 
-function HomePage({ observer, subscriptions }: ObservableProps): ReactElement {
-  const [state, setState] = useState<State>(initial)
+function HomePage(): ReactElement {
+  const state = useStateObserver()
+  const observer = ObserverService.instance()
   const toggleLang = useCallback((lang: string) => observer.setLang(lang), [
     observer
   ])
-
-  useEffect((): (() => void) => {
-    subscriptions.push(observer.subscribe(setState))
-
-    return (): void =>
-      subscriptions.forEach((sub: Subscription): void => sub.unsubscribe())
-  }, [observer, subscriptions])
 
   return (
     <Grid>
@@ -29,4 +22,4 @@ function HomePage({ observer, subscriptions }: ObservableProps): ReactElement {
   )
 }
 
-export default observable(HomePage)
+export default HomePage

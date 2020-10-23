@@ -5,6 +5,7 @@
     "removeComments": true,
     "preserveConstEnums": true,
     "esModuleInterop": true,
+    "experimentalDecorators": true,
     "outDir": "./dist",
     "target": "es5",
     "lib": [

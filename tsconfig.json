@@ -6,6 +6,7 @@
     "preserveConstEnums": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "outDir": "./dist",
     "target": "es5",
     "lib": [

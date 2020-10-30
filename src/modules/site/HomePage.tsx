@@ -3,6 +3,7 @@ import { Title } from '@/common/components/Title'
 import React, { ReactElement, useCallback } from 'react'
 import { useStateObserver } from '@/common/hooks/useStateObserver'
 import { ObserverService } from '@/common/services/ObserverService'
+import { Button } from '@/common/components/Button'
 
 function HomePage(): ReactElement {
   const state = useStateObserver()
@@ -14,8 +15,8 @@ function HomePage(): ReactElement {
   return (
     <Grid>
       <p>
-        <span onClick={() => toggleLang('en')}>en</span>
-        <span onClick={() => toggleLang('ru')}>ru</span>
+        <Button onClick={() => toggleLang('en')}>en</Button>
+        <Button onClick={() => toggleLang('ru')}>ru</Button>
       </p>
       <Title>{state.lang}</Title>
     </Grid>

@@ -9,8 +9,6 @@ export function useStateObserver(): State {
 
   useEffect((): (() => void) => {
     subscriptions.push(observer.subscribe(setState))
-    console.log(subscriptions)
-
     return (): void =>
       subscriptions.forEach((sub: Subscription): void => sub.unsubscribe())
   }, [observer, subscriptions])

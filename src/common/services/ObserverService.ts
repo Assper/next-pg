@@ -1,33 +1,15 @@
 import { Subject, Subscription } from 'rxjs'
 
-export type State = {
-  lang: string
-}
+export type State = Record<string, any>
 
-export const initial: State = {
-  lang: 'en'
-}
+export abstract class ObserverService {
+  protected subject = new Subject<State>()
 
-export class ObserverService {
-  private subject = new Subject<State>()
-  private state = initial
-  private static self: ObserverService | null = null
-
-  static instance(): ObserverService {
-    if (!this.self) {
-      this.self = new ObserverService()
-    }
-
-    return this.self
+  protected update(state: State): void {
+    this.subject.next(state)
   }
 
-  private constructor() {
-    this.update()
-  }
-
-  private update(): void {
-    this.subject.next(this.state)
-  }
+  abstract getState(): State
 
   subscribe(
     setState: (state: State) => void,
@@ -38,10 +20,5 @@ export class ObserverService {
 
   unsubscribe(sub: Subscription): void {
     sub.unsubscribe()
-  }
-
-  setLang(lang: string): void {
-    this.state = { lang }
-    this.update()
   }
 }

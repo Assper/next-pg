@@ -1,23 +1,27 @@
+import NextLink from 'next/link'
 import { Grid } from '@/common/components/Grid'
 import { Title } from '@/common/components/Title'
 import React, { ReactElement, useCallback } from 'react'
-import { useStateObserver } from '@/common/hooks/useStateObserver'
-import { ObserverService } from '@/common/services/ObserverService'
+import { useService } from '@/common/hooks/useService'
+import { Button } from '@/common/components/Button'
+import { IntlService } from '@/common/services/IntlService'
 
 function HomePage(): ReactElement {
-  const state = useStateObserver()
-  const observer = ObserverService.instance()
-  const toggleLang = useCallback((lang: string) => observer.setLang(lang), [
-    observer
+  const { service, state } = useService(IntlService)
+  const toggleLang = useCallback((lang: string) => service.setLang(lang), [
+    service
   ])
 
   return (
     <Grid>
       <p>
-        <span onClick={() => toggleLang('en')}>en</span>
-        <span onClick={() => toggleLang('ru')}>ru</span>
+        <Button onClick={() => toggleLang('en')}>en</Button>
+        <Button onClick={() => toggleLang('ru')}>ру</Button>
       </p>
       <Title>{state.lang}</Title>
+      <NextLink href="/about" as="/about">
+        {service.getMessage('aboutLink')}
+      </NextLink>
     </Grid>
   )
 }
